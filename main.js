@@ -84,11 +84,8 @@ busmallImageRight.src = allBusmallImageArray[randomNumberRight].src;
 leftImageText.textContent = allBusmallImageArray[randomNumberLeft].name;
 middleImageText.textContent = allBusmallImageArray[randomNumberMiddle].name;
 rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
-
-busmallContainer.addEventListener('click', imageClickHandler);
-
 };
-
+busmallContainer.addEventListener('click', imageClickHandler);
 //imageClickHandler();
 
 
@@ -103,26 +100,26 @@ busmallContainer.addEventListener('click', imageClickHandler);
     
 //Images
 
-new BusmallImage('./img/bag.jpg', 'Bag');
+new BusmallImage('./img/bag.jpg', 'R2D2 Rolling Suitcase');
 new BusmallImage('./img/banana.jpg', 'Banana Slicer');
-new BusmallImage('./img/bathroom.jpg', 'Bathroom');
-new BusmallImage('./img/boots.jpg', 'Boots');
-new BusmallImage('./img/breakfast.jpg', 'breakfast');
-new BusmallImage('./img/bubblegum.jpg', 'bubblegum');
-new BusmallImage('./img/chair.jpg', 'chair');
-new BusmallImage('./img/cthulhu.jpg', 'cthulhu');
-new BusmallImage('./img/dog-duck.jpg', 'dog-duck');
-new BusmallImage('./img/dragon.jpg', 'Dragon');
-new BusmallImage('./img/pen.jpg', 'pen');
-new BusmallImage('./img/pet-sweep.jpg', 'pet-sweep');
-new BusmallImage('./img/scissors.jpg', 'scissors');
-new BusmallImage('./img/shark.jpg', 'shark');
-new BusmallImage('./img/sweep.jpg', 'sweep');
-new BusmallImage('./img/tauntaun.jpg', 'tauntaun');
-new BusmallImage('./img/unicorn.jpg', 'unicorn');
-new BusmallImage('./img/usb.gif', 'usb');
-new BusmallImage('./img/water-can.jpg', 'water-can');
-new BusmallImage('./img/wine-glass.jpg', 'wine glass');
+new BusmallImage('./img/bathroom.jpg', 'Bathroom Tabket Holder');
+new BusmallImage('./img/boots.jpg', 'Pedicure Rainboots');
+new BusmallImage('./img/breakfast.jpg', 'All-In-One Breakfast Maker');
+new BusmallImage('./img/bubblegum.jpg', 'Meatball Gum');
+new BusmallImage('./img/chair.jpg', 'Bumpy Chair');
+new BusmallImage('./img/cthulhu.jpg', 'Snugly Cthulhu');
+new BusmallImage('./img/dog-duck.jpg', 'Canine Duck-Face');
+new BusmallImage('./img/dragon.jpg', 'Free-Range Dragon Meat');
+new BusmallImage('./img/pen.jpg', 'Write While You Eat');
+new BusmallImage('./img/pet-sweep.jpg', 'Pet Sweep');
+new BusmallImage('./img/scissors.jpg', 'Pizza Scissors');
+new BusmallImage('./img/shark.jpg', 'Soft Shark Sleeping Bag');
+new BusmallImage('./img/sweep.jpg', 'Baby Sweeper');
+new BusmallImage('./img/tauntaun.jpg', 'Soft Tauntaun Sleeping Bag');
+new BusmallImage('./img/unicorn.jpg', 'Premium Unicorn Meat');
+new BusmallImage('./img/usb.gif', 'Reptile USB');
+new BusmallImage('./img/water-can.jpg', 'Useless Watering Can');
+new BusmallImage('./img/wine-glass.jpg', 'Impossible Wine Glass');
 
 
     //check to make sure we click on the correct image;

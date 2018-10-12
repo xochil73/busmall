@@ -1,0 +1,24 @@
+section {
+    height: 100px;
+    width: 50%;
+    background-color: rgb(86, 115, 227);
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+
+}
+body {
+    background-color: rgb(86, 214, 227);
+}
+
+.column {
+    float: left;
+    width: 28%;
+    padding: 3px;
+  }
+  
+  /* Clear floats after image containers */
+  .busmall-container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
