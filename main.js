@@ -13,14 +13,10 @@ var currentMiddleArrayIndex = 3;
 var currentRightArrayIndex = 1;
 var allBusmallImageArray =[];
 var clickCount = 0; //tracking clicks
-
-//Collect all document element reference we need ie ctx
-
-//variable to render list
-//making our ul and li
-  
-  
-
+var ctx = document.getElementById("busMallChart").getContext('2d');
+var likes = [];
+var names = [];
+var appearances = [];
 
 
 //Constructor: Bus Mall Images
@@ -43,11 +39,11 @@ BusmallImage.prototype.renderImage = function () {
 //Event Listeners and Handlers
 
 var imageClickHandler = function(event) {
-    //Make sure click is only counted if an IMAGE is clicked
+    
+    
     if(event.target.id === 'left' || event.target.id === 'middle' || event.target.id === 'right')
-    
-    
-   
+    //Make sure click is only counted if an IMAGE is clicked
+    clickCount++;
     // Use Random Number 
     do{
         var randomNumberLeft = Math.floor(Math.random() * allBusmallImageArray.length)
@@ -95,12 +91,21 @@ leftImageText.textContent = allBusmallImageArray[randomNumberLeft].name;
 middleImageText.textContent = allBusmallImageArray[randomNumberMiddle].name;
 rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
 
-clickCount++;
+
+console.log(clickCount, 'click Count');
     if(clickCount === 25){
-        renderList();
+        for(var i=0 ; i < allBusmallImageArray.length ; i++){
+            names.push(allBusmallImageArray[i].name);
+            likes.push(allBusmallImageArray[i].likes);
+            appearances.push(allBusmallImageArray[i].appeared);
+        }
+        (clickCount, 'click Count');
+        //renderList();
         busmallImageLeft.removeEventListener('click', imageClickHandler);
         busmallImageMiddle.removeEventListener('click', imageClickHandler);
         busmallImageRight.removeEventListener('click', imageClickHandler);
+        busmallContainer.parentNode.removeChild(busmallContainer);
+        renderChart();
     }
 };
 //busmallContainer.addEventListener('click', imageClickHandler);
@@ -127,15 +132,7 @@ var renderList = function(){
 }
 
 
-
-
-    //builds images
-     //container for all images
-    
-
-        //choose 3 new random images that don't repeat from the current images of eachother
-        //change the source
-    
+   
 //Images
 
 new BusmallImage('./img/bag.jpg', 'R2D2 Rolling Suitcase');
@@ -160,39 +157,46 @@ new BusmallImage('./img/water-can.jpg', 'Useless Watering Can');
 new BusmallImage('./img/wine-glass.jpg', 'Impossible Wine Glass');
 
 
-    //check to make sure we click on the correct image;
-
-//increment the correct image's likes
-
-//increment all current images appearred count
-
-//call choose new image function ()
-
-//test if we have clicked 25 times
-//shut the listener off
-//make chart appear
-
-
-
-
-
-
-//instatiate new images
-//busmalContainer.addEventListener('clieck', handleBusmalClick);
-
+    
 // =============================================
 //Charts
 //==============================================
+ var chartData =  {
+    labels: names,
+    datasets: [{
+        label: '# of Likes',
+        data: likes,
+        backgroundColor: '#b8543e',
+        borderColor: '#b8543e',
+        borderWidth: 1
+    },
+    {
+        label: '# of appearances',
+        data: appearances,
+        backgroundColor: '#3e88b8',
+        borderColor: '#3e88b8',
+        borderWidth: 1
+    }]
+ };
 
-//function to render the chart
-//var rederChart = function() {
-    // chartsjs need ctx
+var chartOptions = {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+            }
+        }]
+    }
+    
+};
 
-//===============================
-//collect all data
-//we need labels, data values, colors
+var likesChart = {
+    type: 'horizontalBar',
+    data: chartData,
+    options: chartOptions,
+};
+//render the chart
 
-//create a data object that gets passed all our other arrays based off the examples from chartjs
-
-//=============================
-    //call a new chart and pass in ctx and our data
+var renderChart = function(){
+    var myChart = new Chart(ctx, likesChart); 
+};
