@@ -8,16 +8,20 @@ var busmallContainer = document.getElementById('busmall-container');
 var leftImageText = document.getElementById('picture-left-text');
 var middleImageText = document.getElementById('picture-middle-text');
 var rightImageText =  document.getElementById('picture-right-text');
-var currentLeftArrayIndex = 0;
-var currentMiddleArrayIndex = 8;
-var currentRightArrayIndex = 15;
+var currentLeftArrayIndex = 9;
+var currentMiddleArrayIndex = 3;
+var currentRightArrayIndex = 1;
 var allBusmallImageArray =[];
 var clickCount = 0; //tracking clicks
 
 //Collect all document element reference we need ie ctx
 
 //variable to render list
-var renderList = document.getElementById('click-results');
+//making our ul and li
+  
+  
+
+
 
 //Constructor: Bus Mall Images
 var BusmallImage = function (src, name){
@@ -27,7 +31,7 @@ var BusmallImage = function (src, name){
     this.appeared = 0
     allBusmallImageArray.push(this);
 }
-
+console.log(allBusmallImageArray);
 //BusMall Image Prototypes
 BusmallImage.prototype.renderImage = function () {
     busmallImageLeft.src = this.src;
@@ -94,6 +98,9 @@ rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
 clickCount++;
     if(clickCount === 25){
         renderList();
+        busmallImageLeft.removeEventListener('click', imageClickHandler);
+        busmallImageMiddle.removeEventListener('click', imageClickHandler);
+        busmallImageRight.removeEventListener('click', imageClickHandler);
     }
 };
 //busmallContainer.addEventListener('click', imageClickHandler);
@@ -101,6 +108,23 @@ busmallImageLeft.addEventListener('click', imageClickHandler);
 busmallImageMiddle.addEventListener('click', imageClickHandler);
 busmallImageRight.addEventListener('click', imageClickHandler);
 //imageClickHandler();
+
+var renderList = function(){ 
+    
+    var target = document.getElementById('final-results');
+    var h2El = document.createElement('h2');
+    h2El.textContent = 'Results';
+    target.appendChild(h2El);
+
+
+  //Creates my un-ordered list
+  for (var i = 0; i < allBusmallImageArray.length; i++) { 
+    var listResults = document.createElement('li');
+    listResults.textContent = 'Name:     ' + allBusmallImageArray[i].name + '     Total likes:     ' + allBusmallImageArray[i].likes;
+    target.appendChild(listResults);
+  }
+
+}
 
 
 
@@ -116,7 +140,7 @@ busmallImageRight.addEventListener('click', imageClickHandler);
 
 new BusmallImage('./img/bag.jpg', 'R2D2 Rolling Suitcase');
 new BusmallImage('./img/banana.jpg', 'Banana Slicer');
-new BusmallImage('./img/bathroom.jpg', 'Bathroom Tabket Holder');
+new BusmallImage('./img/bathroom.jpg', 'Bathroom Tablet Holder');
 new BusmallImage('./img/boots.jpg', 'Pedicure Rainboots');
 new BusmallImage('./img/breakfast.jpg', 'All-In-One Breakfast Maker');
 new BusmallImage('./img/bubblegum.jpg', 'Meatball Gum');
