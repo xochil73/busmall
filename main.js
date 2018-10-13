@@ -12,18 +12,19 @@ var currentLeftArrayIndex = 0;
 var currentMiddleArrayIndex = 8;
 var currentRightArrayIndex = 15;
 var allBusmallImageArray =[];
+var clickCount = 0; //tracking clicks
 
 //Collect all document element reference we need ie ctx
 
-
-
+//variable to render list
+var renderList = document.getElementById('click-results');
 
 //Constructor: Bus Mall Images
 var BusmallImage = function (src, name){
     this.src = src
     this.name = name
     this.likes = 0
-    this. appeared = 0
+    this.appeared = 0
     allBusmallImageArray.push(this);
 }
 
@@ -41,6 +42,8 @@ var imageClickHandler = function(event) {
     //Make sure click is only counted if an IMAGE is clicked
     if(event.target.id === 'left' || event.target.id === 'middle' || event.target.id === 'right')
     
+    
+   
     // Use Random Number 
     do{
         var randomNumberLeft = Math.floor(Math.random() * allBusmallImageArray.length)
@@ -49,11 +52,11 @@ var imageClickHandler = function(event) {
     do{
         var randomNumberMiddle = Math.floor(Math.random() * allBusmallImageArray.length)
     }
-    while(randomNumberMiddle === currentLeftArrayIndex || randomNumberMiddle === currentMiddleArrayIndex || randomNumberMiddle === currentRightArrayIndex );
+    while(randomNumberMiddle === currentLeftArrayIndex || randomNumberMiddle === currentMiddleArrayIndex || randomNumberMiddle === currentRightArrayIndex ||randomNumberMiddle === randomNumberLeft);
     do{
         var randomNumberRight = Math.floor(Math.random() * allBusmallImageArray.length)
     }
-    while(randomNumberRight === currentLeftArrayIndex || randomNumberRight === currentMiddleArrayIndex || randomNumberRight === currentRightArrayIndex );
+    while(randomNumberRight === currentLeftArrayIndex || randomNumberRight === currentMiddleArrayIndex || randomNumberRight === currentRightArrayIndex || randomNumberRight === randomNumberLeft || randomNumberRight === randomNumberMiddle);
 
 
 
@@ -61,10 +64,13 @@ var imageClickHandler = function(event) {
 if(event.target.id ==='left'){
     allBusmallImageArray[currentLeftArrayIndex].likes++;
     console.log('left image clicked');
+    
 } else if(event.target.id === 'middle'){
     allBusmallImageArray[currentMiddleArrayIndex].likes++;
-} else{
+    console.log('middle image clicked');
+} else if(event.target.id  === 'right') {
     allBusmallImageArray[currentRightArrayIndex].likes++;
+    console.log('right image clicked');
 }
 
 allBusmallImageArray[currentLeftArrayIndex].appeared++;
@@ -84,8 +90,16 @@ busmallImageRight.src = allBusmallImageArray[randomNumberRight].src;
 leftImageText.textContent = allBusmallImageArray[randomNumberLeft].name;
 middleImageText.textContent = allBusmallImageArray[randomNumberMiddle].name;
 rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
+
+clickCount++;
+    if(clickCount === 25){
+        renderList();
+    }
 };
-busmallContainer.addEventListener('click', imageClickHandler);
+//busmallContainer.addEventListener('click', imageClickHandler);
+busmallImageLeft.addEventListener('click', imageClickHandler);
+busmallImageMiddle.addEventListener('click', imageClickHandler);
+busmallImageRight.addEventListener('click', imageClickHandler);
 //imageClickHandler();
 
 
@@ -114,7 +128,7 @@ new BusmallImage('./img/pen.jpg', 'Write While You Eat');
 new BusmallImage('./img/pet-sweep.jpg', 'Pet Sweep');
 new BusmallImage('./img/scissors.jpg', 'Pizza Scissors');
 new BusmallImage('./img/shark.jpg', 'Soft Shark Sleeping Bag');
-new BusmallImage('./img/sweep.jpg', 'Baby Sweeper');
+new BusmallImage('./img/sweep.png', 'Baby Sweeper');
 new BusmallImage('./img/tauntaun.jpg', 'Soft Tauntaun Sleeping Bag');
 new BusmallImage('./img/unicorn.jpg', 'Premium Unicorn Meat');
 new BusmallImage('./img/usb.gif', 'Reptile USB');

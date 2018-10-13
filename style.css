@@ -17,8 +17,8 @@ body {
   }
   
   /* Clear floats after image containers */
-  .busmall-container::after {
-    content: "";
+  .busmall-container::after { 
+    content: ""; 
     clear: both;
-    display: table;
-  }
+    display: table; 
+   } 
