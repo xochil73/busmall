@@ -168,14 +168,14 @@ new BusmallImage('./img/wine-glass.jpg', 'Impossible Wine Glass');
         data: likes,
         backgroundColor: '#b8543e',
         borderColor: '#b8543e',
-        borderWidth: 1
+        borderWidth: 9
     },
     {
         label: '# of appearances',
         data: appearances,
         backgroundColor: '#3e88b8',
         borderColor: '#3e88b8',
-        borderWidth: 1
+        borderWidth: 9
     }]
  };
 
@@ -192,6 +192,7 @@ var chartOptions = {
 
 var likesChart = {
     type: 'horizontalBar',
+    responsive: true,
     data: chartData,
     options: chartOptions,
 };

@@ -26,4 +26,11 @@ body {
    ul {
        text-align: center;
        float: right;
+       background-color: rgb(86, 115, 227);
    }
+   div {
+    cursor: pointer; 
+
+   }
+
+   
