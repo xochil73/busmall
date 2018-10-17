@@ -100,18 +100,35 @@ console.log(clickCount, 'click Count');
             appearances.push(allBusmallImageArray[i].appeared);
         }
         (clickCount, 'click Count');
+       
+        
+        
         //renderList();
+        
         busmallImageLeft.removeEventListener('click', imageClickHandler);
         busmallImageMiddle.removeEventListener('click', imageClickHandler);
         busmallImageRight.removeEventListener('click', imageClickHandler);
         busmallContainer.parentNode.removeChild(busmallContainer);
         renderChart();
+        
+        
+         
     }
+    var saveImages = function(clickCount){
+        localStorage.setItem = JSON.stringify(clickCount);
+    }
+
+        saveImages(clickCount);
+     
+    
+      
 };
+
 //busmallContainer.addEventListener('click', imageClickHandler);
 busmallImageLeft.addEventListener('click', imageClickHandler);
 busmallImageMiddle.addEventListener('click', imageClickHandler);
 busmallImageRight.addEventListener('click', imageClickHandler);
+
 //imageClickHandler();
 
 var renderList = function(){ 
@@ -166,15 +183,15 @@ new BusmallImage('./img/wine-glass.jpg', 'Impossible Wine Glass');
     datasets: [{
         label: '# of Likes',
         data: likes,
-        backgroundColor: '#b8543e',
-        borderColor: '#b8543e',
+        backgroundColor: '#ffbd00',
+        borderColor: '#ffbd00',
         borderWidth: 9
     },
     {
         label: '# of appearances',
         data: appearances,
-        backgroundColor: '#3e88b8',
-        borderColor: '#3e88b8',
+        backgroundColor: '28afc8',
+        borderColor: '#28afc8',
         borderWidth: 9
     }]
  };
@@ -195,6 +212,7 @@ var likesChart = {
     responsive: true,
     data: chartData,
     options: chartOptions,
+    defaultFontSize: 25,
 };
 //render the chart
 

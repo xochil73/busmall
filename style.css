@@ -1,27 +1,48 @@
 section {
-    height: 100px;
-    width: 50%;
-    background-color: rgb(86, 115, 227);
-    font-family: 'Fira Sans', sans-serif;
+    
+    width: 960;
+    background-color: #e3e156cb;
+    font-family: 'Mali', cursive;
     text-align: center;
+    display:inline-block;
 
+}
+
+main {
+    float: right,
 }
 body {
     background-color: rgb(86, 214, 227);
+    background-image: url('img/anne-morris-983391-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: 1000px;
+    background-position: center;
+    
+
+    
+}
+h1 {
+    font-size:30px;
+}
+h2 {
+    font-size: 20px;
+    font-family: 'Patua One', cursive;
+    font-style: oblique;
+    font-weight: bold;
 }
 
-.column {
+/* .column {
     float: left;
     width: 28%;
     padding: 3px;
   }
   
   /* Clear floats after image containers */
-  .busmall-container::after { 
+  /* .busmall-container::after { 
     content: ""; 
     clear: both;
     display: table; 
-   } 
+   }  */ */
 
    ul {
        text-align: center;
@@ -29,8 +50,31 @@ body {
        background-color: rgb(86, 115, 227);
    }
    div {
-    cursor: pointer; 
+        cursor: pointer; 
+        background-color: rgba(0, 255, 255, 0.637);
+        display: inline-block;
 
    }
-
+   img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+   }
+  
+   #menu {
+    position: fixed;
+    right: 0;
+    top: 80%;
+    width: 12em;
+    margin-top: -2.5em;
+    font-family: 'Mali', cursive;
+    font-size: 30px;
+    color: rgb(145, 170, 199);
+    background-color: beige;
+  }
    
+
+   canvas {
+        width: 100px;
+        background-color: rgb(86, 214, 227);
+   }
