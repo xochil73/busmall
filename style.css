@@ -1,10 +1,12 @@
-section {
+section  {
     
-    width: 960;
-    background-color: #e3e156cb;
+    width: 900px;
+    background-color: rgb(145, 170, 199, 70%);
     font-family: 'Mali', cursive;
     text-align: center;
-    display:inline-block;
+    /* display: inline-block; */
+    margin: auto;
+    margin-bottom: 300px;
 
 }
 
@@ -14,9 +16,10 @@ main {
 body {
     background-color: rgb(86, 214, 227);
     background-image: url('img/anne-morris-983391-unsplash.jpg');
-    background-repeat: no-repeat;
-    background-size: 1000px;
+    /* background-repeat: no-repeat; */
+    background-size: 100% 100%;
     background-position: center;
+    /* margin-top: 120px; */
     
 
     
@@ -65,10 +68,10 @@ h2 {
     position: fixed;
     right: 0;
     top: 80%;
-    width: 12em;
+    width: 245px;
     margin-top: -2.5em;
     font-family: 'Mali', cursive;
-    font-size: 30px;
+    font-size: 20px;
     color: rgb(145, 170, 199);
     background-color: beige;
   }
