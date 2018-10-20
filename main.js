@@ -12,7 +12,11 @@ var currentLeftArrayIndex = 9;
 var currentMiddleArrayIndex = 3;
 var currentRightArrayIndex = 1;
 var allBusmallImageArray = [];
-var clickCount = 0; //tracking clicks
+var clickCount = 0; //tracking clicks 
+// ^^ This line checks if clickCount exists in localstorage, if it
+//  does not the value will start back at zero... 
+// Also, I would reset the information in localstorage when 25 clicks is acheived....
+
 var ctx = document.getElementById("busMallChart").getContext('2d');
 var likes = [];
 var names = [];
@@ -109,7 +113,20 @@ var saveLikes = function(allBusmallImageArray){
     console.log(saveLikes, 'image likes');
     
 
-console.log(clickCount, 'click Count');
+// var saveImages = function(clickCount){
+//     console.log('hitting save images!');
+//     localStorage.setItem('clickCount',JSON.stringify(clickCount));
+//     console.log('localStorage... should be sent to click count', localStorage);
+// }
+//     saveImages(clickCount);
+//     console.log(clickCount, 'click Count');
+//     // I would keep everything in the same spot before you hit 25 clicks...
+//     // with this you only have saving clickCount, but apply the same process to the image information.
+
+
+
+
+
     if(clickCount === 25){
         for(var i=0 ; i < allBusmallImageArray.length ; i++){
             names.push(allBusmallImageArray[i].name);
@@ -137,6 +154,7 @@ console.log(clickCount, 'click Count');
         
          
     }
+     
     
 };
 
