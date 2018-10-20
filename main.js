@@ -11,7 +11,7 @@ var rightImageText =  document.getElementById('picture-right-text');
 var currentLeftArrayIndex = 9;
 var currentMiddleArrayIndex = 3;
 var currentRightArrayIndex = 1;
-var allBusmallImageArray =[];
+var allBusmallImageArray = [];
 var clickCount = 0; //tracking clicks
 var ctx = document.getElementById("busMallChart").getContext('2d');
 var likes = [];
@@ -73,6 +73,7 @@ if(event.target.id ==='left'){
     console.log('right image clicked');
 }
 
+
 allBusmallImageArray[currentLeftArrayIndex].appeared++;
 allBusmallImageArray[currentMiddleArrayIndex].appeared++;
 allBusmallImageArray[currentRightArrayIndex].appeared++;
@@ -90,7 +91,23 @@ busmallImageRight.src = allBusmallImageArray[randomNumberRight].src;
 leftImageText.textContent = allBusmallImageArray[randomNumberLeft].name;
 middleImageText.textContent = allBusmallImageArray[randomNumberMiddle].name;
 rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
-
+// save click count into local storage
+// var saveClicks = function(clickCount){
+//     console.log('hitting save images!');
+//     localStorage.setItem('clickCount',JSON.stringify(clickCount));
+//     console.log('localStorage... should be sent to click count', localStorage);
+// }
+//     saveClicks(clickCount);
+//     console.log(clickCount, 'click Count');
+    
+    
+var saveLikes = function(allBusmallImageArray){
+    localStorage.setItem('data', JSON.stringify(allBusmallImageArray));
+    
+}
+    saveLikes(allBusmallImageArray);
+    console.log(saveLikes, 'image likes');
+    
 
 console.log(clickCount, 'click Count');
     if(clickCount === 25){
@@ -99,8 +116,14 @@ console.log(clickCount, 'click Count');
             likes.push(allBusmallImageArray[i].likes);
             appearances.push(allBusmallImageArray[i].appeared);
         }
+        
         (clickCount, 'click Count');
-       
+    
+    //remove local storage for click count
+    if(clickCount > 25){
+        localStorage.removeItem(clickCount);
+        
+    }
         
         
         //renderList();
@@ -114,15 +137,9 @@ console.log(clickCount, 'click Count');
         
          
     }
-    var saveImages = function(clickCount){
-        localStorage.setItem = JSON.stringify(clickCount);
-    }
-
-        saveImages(clickCount);
-     
     
-      
 };
+
 
 //busmallContainer.addEventListener('click', imageClickHandler);
 busmallImageLeft.addEventListener('click', imageClickHandler);
