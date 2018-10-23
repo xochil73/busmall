@@ -4,10 +4,14 @@
 var busmallImageLeft = document.getElementById('left');
 var busmallImageMiddle = document.getElementById('middle');
 var busmallImageRight = document.getElementById('right');
+var likesImageLeft = document.getElementById('pic-like-left');
+var likesImageMiddle = document.getElementById('pic-like-middle');
+var likesImageRight = document.getElementById('pic-like-right');
 var busmallContainer = document.getElementById('busmall-container');
 var leftImageText = document.getElementById('picture-left-text');
 var middleImageText = document.getElementById('picture-middle-text');
 var rightImageText =  document.getElementById('picture-right-text');
+var refreshPage = document.getElementById('refresh-page')
 var currentLeftArrayIndex = 9;
 var currentMiddleArrayIndex = 3;
 var currentRightArrayIndex = 1;
@@ -21,8 +25,13 @@ var ctx = document.getElementById("busMallChart").getContext('2d');
 var likes = [];
 var names = [];
 var appearances = [];
+ //refresh page
+//  var buttonClickHandler = function(event2) {
+//     if (event2.target.id === 'refresh-page'){
+//         localStorage.clear();
+//     }
 
-
+//     buttonClickHandler(event2);
 //Constructor: Bus Mall Images
 var BusmallImage = function (src, name){
     this.src = src
@@ -95,14 +104,10 @@ busmallImageRight.src = allBusmallImageArray[randomNumberRight].src;
 leftImageText.textContent = allBusmallImageArray[randomNumberLeft].name;
 middleImageText.textContent = allBusmallImageArray[randomNumberMiddle].name;
 rightImageText.textContent = allBusmallImageArray[randomNumberRight].name;
-// save click count into local storage
-// var saveClicks = function(clickCount){
-//     console.log('hitting save images!');
-//     localStorage.setItem('clickCount',JSON.stringify(clickCount));
-//     console.log('localStorage... should be sent to click count', localStorage);
-// }
-//     saveClicks(clickCount);
-//     console.log(clickCount, 'click Count');
+likesImageLeft.textContent = 'This image has been liked ' + allBusmallImageArray[randomNumberLeft].likes + ' times.';
+likesImageMiddle.textContent = 'This image has been liked ' + allBusmallImageArray[randomNumberMiddle].likes + ' times. ';
+likesImageRight.textContent = 'This image has been liked ' + allBusmallImageArray[randomNumberRight].likes + ' times. ';
+
     
     
 var saveLikes = function(allBusmallImageArray){
@@ -113,20 +118,6 @@ var saveLikes = function(allBusmallImageArray){
     console.log(saveLikes, 'image likes');
     
 
-// var saveImages = function(clickCount){
-//     console.log('hitting save images!');
-//     localStorage.setItem('clickCount',JSON.stringify(clickCount));
-//     console.log('localStorage... should be sent to click count', localStorage);
-// }
-//     saveImages(clickCount);
-//     console.log(clickCount, 'click Count');
-//     // I would keep everything in the same spot before you hit 25 clicks...
-//     // with this you only have saving clickCount, but apply the same process to the image information.
-
-
-
-
-
     if(clickCount === 25){
         for(var i=0 ; i < allBusmallImageArray.length ; i++){
             names.push(allBusmallImageArray[i].name);
@@ -136,9 +127,9 @@ var saveLikes = function(allBusmallImageArray){
         
         (clickCount, 'click Count');
     
-    //remove local storage for click count
-    if(clickCount > 25){
-        localStorage.removeItem(clickCount);
+    //refresh page
+    if(localStorage){
+        localStorage.removeItem(allBusmallImageArray);
         
     }
         
@@ -151,8 +142,6 @@ var saveLikes = function(allBusmallImageArray){
         busmallContainer.parentNode.removeChild(busmallContainer);
         renderChart();
         
-        
-         
     }
      
     
@@ -183,8 +172,6 @@ var renderList = function(){
 
 }
 
-
-   
 //Images
 
 new BusmallImage('./img/bag.jpg', 'R2D2 Rolling Suitcase');
@@ -220,14 +207,16 @@ new BusmallImage('./img/wine-glass.jpg', 'Impossible Wine Glass');
         data: likes,
         backgroundColor: '#ffbd00',
         borderColor: '#ffbd00',
-        borderWidth: 9
+        hoverBackgroundColor: '#025cfd',
+        borderWidth: 5
     },
     {
         label: '# of appearances',
         data: appearances,
         backgroundColor: '28afc8',
         borderColor: '#28afc8',
-        borderWidth: 9
+        hoverBackgroundColor: '#fd0502',
+        borderWidth: 5
     }]
  };
 
